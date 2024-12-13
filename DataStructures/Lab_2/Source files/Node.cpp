@@ -1,5 +1,5 @@
 #include <iostream>
-#include "C:\Users\User\source\repos\DataStructures\Lab_2\Header Files\Node.h"
+#include "..\Header Files\Node.h"
 
 int Data;
 Node* Next;

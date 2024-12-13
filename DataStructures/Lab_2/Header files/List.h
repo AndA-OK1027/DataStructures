@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
-#include "C:\Users\User\source\repos\DataStructures\Lab_2\Header Files\Node.h"
-#include "C:\Users\User\source\repos\DataStructures\Lab_2\Header Files\List.h"
+#include "..\Header Files\Node.h"
+#include "..\Header Files\List.h"
 
 // !brief ќпределение структуры двусв€зного списка.
 struct List

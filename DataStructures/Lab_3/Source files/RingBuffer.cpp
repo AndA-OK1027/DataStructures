@@ -1,4 +1,4 @@
-#include "C:\Users\User\source\repos\DataStructures\Lab_3\Header Files\RingBuffer.h"
+#include "..\Header Files\RingBuffer.h"
 #include <iostream>
 
 RingBuffer::RingBuffer(int Size)

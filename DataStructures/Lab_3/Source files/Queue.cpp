@@ -1,4 +1,4 @@
-#include "C:\Users\User\source\repos\DataStructures\Lab_3\Header Files\Queue.h"
+#include "..\Header Files\Queue.h"
 #include <iostream>
 
 Queue::Queue(int size) 

@@ -1,8 +1,8 @@
 ﻿#include <iostream>
-#include "C:\Users\User\source\repos\DataStructures\Lab_3\Header Files\Stack.h"
-#include "C:\Users\User\source\repos\DataStructures\Lab_3\Header Files\RingBuffer.h"
-#include "C:\Users\User\source\repos\DataStructures\Lab_3\Header Files\Queue.h"
-#include "C:\Users\User\source\repos\DataStructures\Lab_3\Header Files\QueueStacks.h"
+#include "..\Header Files\Stack.h"
+#include "..\Header Files\RingBuffer.h"
+#include "..\Header Files\Queue.h"
+#include "..\Header Files\QueueStacks.h"
 
 void PrintStack(Stack* stack)
 {

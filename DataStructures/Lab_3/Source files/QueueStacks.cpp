@@ -1,4 +1,4 @@
-#include "C:\Users\User\source\repos\DataStructures\Lab_3\Header Files\QueueStacks.h"
+#include "..\Header Files\QueueStacks.h"
 #include <iostream>
 
 Stack* Stack1;

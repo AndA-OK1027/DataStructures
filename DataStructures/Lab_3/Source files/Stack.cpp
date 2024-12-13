@@ -1,4 +1,4 @@
-#include "C:\Users\User\source\repos\DataStructures\Lab_3\Header Files\Stack.h"
+#include "..\Header Files\Stack.h"
 #include <iostream>
 
 int* Data;

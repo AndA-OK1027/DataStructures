@@ -1,5 +1,5 @@
 #include <iostream>
-#include "C:\Users\User\source\repos\DataStructures\Lab1\Header Files\DynamicArray.h"
+#include "..\Header Files\DynamicArray.h"
 using namespace std;
 
 int main()

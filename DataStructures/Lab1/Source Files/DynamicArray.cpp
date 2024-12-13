@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "C:\Users\User\source\repos\DataStructures\Lab1\Header Files\DynamicArray.h"
+#include "..\Header Files\DynamicArray.h"
 
 //! \brief  Конструктор
 DynamicArray :: DynamicArray() : Size(0), Capacity(1), GrowthFactor(2)
