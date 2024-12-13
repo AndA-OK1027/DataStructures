@@ -208,7 +208,7 @@ int main()
 
         case 4:
             std::cout << "Текущая очередь." << std::endl;
-            //PrintStacksQueue(quu);
+            PrintStacksQueue(quu);
             std::cout << "Выберете действие: " << std::endl;
             std::cout << "\n1. Добавить элемент.\
 		    \n2. Удалить элемент. " << std::endl;
@@ -223,7 +223,7 @@ int main()
                 std::cin >> AddValue;
                 try
                 {
-                    qu->Enqueue(AddValue);
+                    quu->Enqueue(AddValue);
                 }
                 catch (std::out_of_range)
                 {
@@ -235,7 +235,7 @@ int main()
             case 2:
                 try
                 {
-                    qu->Dequeue();
+                    quu->Dequeue();
                 }
                 catch (std::out_of_range)
                 {

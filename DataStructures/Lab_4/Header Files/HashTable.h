@@ -16,6 +16,13 @@ public:
 		string value;
 	};
 
+	int Capacity;
+
+	int Size;
+
+	// !brief
+	HashTable();
+
 	// !brief
 	Item* Items;
 
@@ -28,4 +35,6 @@ public:
 	// !brief
 	void Insert(string key, string value);
 
+	// !brief
+	~HashTable();
 };
