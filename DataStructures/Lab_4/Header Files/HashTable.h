@@ -3,38 +3,62 @@
 
 using namespace std;
 
+// \!brief Определение структуры элемента таблицы.
+struct Item
+{
+	// \!brief Ключ
+	string key;
+	 
+	// \!brief Значение
+	string value;
+
+	// \!brief Указатель на следущий элемент.
+	Item* next;
+
+	// \!brief Конструктор элемета.
+	Item(string key, string value);
+};
+
 struct HashTable
 {
 public:
-	// !brief
-	struct Item 
-	{
-		// !brief
-		string key;
 
-		// !brief
-		string value;
-	};
-
+	// \!brief Максимальный размер.
 	int Capacity;
 
+	// \!brief Размер данной таблицы.
 	int Size;
 
-	// !brief
-	HashTable();
+	// \!brief Количество элементов
+	int Count;
 
-	// !brief
-	Item* Items;
+	// \!brief Конструктор хэш-таблицы.
+	HashTable(int size);
 
-	// !brief
+	// \!brief Массив указателей на элементы хэш-таблицы.
+	Item** Table;
+
+	// \!brief Вспомогательная функция для нахождения индекса элемента в таблице.
+	int GetIndex(string key);
+
+	// \!brief Хэш-функция
 	int Hash(string key);
 
-	// !brief
+	// \!brief Перехэширование
 	void Rehash();
 
-	// !brief
+	// \!brief Вставка элемента.
 	void Insert(string key, string value);
 
-	// !brief
+	// \!brief Удаление элемента.
+	void Remove(string key);
+
+	// \!brief Поиск элемента.
+	string Find(const std::string& key);
+
+	// \!brief Вспомогательная функция для получения элемента по индексу.
+	Item* GetBucket(int index);
+
+	// \!brief Деструктор.
 	~HashTable();
 };

@@ -17,6 +17,6 @@ public:
     // !brief Функция извлечения из очереди
     int Dequeue();
 
-    // !brief Освобождение памяти
+    // !brief Деструктор.
     ~QueueStacks();
 };

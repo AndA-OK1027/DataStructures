@@ -10,13 +10,11 @@ QueueStacks::QueueStacks(int size)
     Stack2 = new Stack(size);
 }
 
-// Функция добавления в очередь
 void QueueStacks::Enqueue(int value)
 {
     Stack1->Push(value);
 }
 
-// Функция извлечения из очереди
 int QueueStacks::Dequeue()
 {
     if (Stack2->Top == -1)
@@ -29,7 +27,6 @@ int QueueStacks::Dequeue()
     return Stack2->Pop();
 }
 
-// Освобождение памяти
 QueueStacks::~QueueStacks()
 {
     delete Stack1;

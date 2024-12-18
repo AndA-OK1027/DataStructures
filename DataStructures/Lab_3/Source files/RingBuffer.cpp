@@ -1,19 +1,18 @@
 #include "..\Header Files\RingBuffer.h"
 #include <iostream>
 
-RingBuffer::RingBuffer(int Size)
+RingBuffer::RingBuffer(int size)
 {
-    Capacity = Size;
-    Buffer = new int[Capacity];
+    Capacity = size;
+    Size = 0;
+    Buffer = new int[size];
     Head = 0;
     Tail = 0;
-    this->Size = 0;
 }
 
 int RingBuffer::FreeSpace()
 {
-    // Один элемент всегда свободен для различения пустого и полного состояния
-    return Capacity - Size - 1;
+    return Capacity - Size;
 }
 
 int RingBuffer::OccupiedSpace()
@@ -21,46 +20,48 @@ int RingBuffer::OccupiedSpace()
     return Size;
 }
 
-void RingBuffer::Resize(int newSize)
-{
-    int* newBuffer = new int[newSize];
-    int elementsToCopy = (newSize < Size) ? newSize : Size;
-
-    for (int i = 0; i < elementsToCopy; i++)
-    {
-        newBuffer[i] = Buffer[(Tail + i) % Capacity];
-    }
-
-    delete[] Buffer;
-    Buffer = newBuffer;
-    Head = elementsToCopy;
-    Tail = 0;
-    Capacity = newSize;
-    Size = elementsToCopy;
-}
+//void RingBuffer::Resize(int newSize)
+//{
+//    int* newBuffer = new int[newSize];
+//    int elementsToCopy = (newSize < Size) ? newSize : Size;
+//
+//    for (int i = 0; i < elementsToCopy; i++)
+//    {
+//        newBuffer[i] = Buffer[(Tail + i) % Capacity];
+//    }
+//
+//    delete[] Buffer;
+//    Buffer = newBuffer;
+//    Head = elementsToCopy;
+//    Tail = 0;
+//    Capacity = newSize;
+//    Size = elementsToCopy;
+//}
 
 void RingBuffer::Add(int value)
 {
-    if (Size == Capacity)
-    {
-        Resize(Size + 1);
-    }
     Buffer[Tail] = value;
     Tail = (Tail + 1) % Capacity;
-    Size++;
+    if (Size == Capacity)
+    {
+        Head = (Head + 1) % Capacity;
+    }
+    else
+    {
+        Size++;
+    }
 }
 
-
-int RingBuffer::Remove()
+bool RingBuffer::Remove()
 {
     if (Size == 0)
     {
-        throw std::out_of_range("Кольцевой буфер пуст!");
+        throw std::out_of_range("Кольцевой буфер пуст, невозможно извлечь элемент.");
     }
-    int value = Buffer[Head];
-    Head = (Head + 1) % Capacity;
+    int data = Buffer[Tail];
+    Tail = (Tail + 1) % Capacity;
     Size--;
-    return value;
+    return true;
 }
 
 int RingBuffer::GetElement()

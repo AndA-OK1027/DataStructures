@@ -6,20 +6,24 @@ struct Queue
 {
 public:
 
-    // !brief Кольцевой буфер
+    // \!brief Кольцевой буфер
     RingBuffer* Buffer;
 
+    // \!brief 
     int GetSize();
 
-    // !brief Конструктор
+    // \!brief Конструктор
     Queue(int size);
 
-    // !brief Функция добавления в очередь
+    // \!brief Увеличение размера очереди.
+    void Resize();
+
+    // \!brief Функция добавления в очередь
     void Enqueue(int value);
 
-    //! brief Функция извлечения из очереди
+    // \!brief Функция извлечения из очереди
     int Dequeue();
 
-    // !brief Освобождение памяти
+    // \!brief Освобождение памяти
     ~Queue();
 };

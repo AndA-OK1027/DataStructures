@@ -11,12 +11,17 @@ int Queue::GetSize()
     return Buffer->Size;
 }
 
+void Queue::Resize()
+{
+    Buffer->Capacity *= 2;
+}
+
 void Queue::Enqueue(int value) 
 {
-    /*if (GetSize() == Buffer->Capacity)
+    if (GetSize() == Buffer->Capacity)
     {
-        throw std::out_of_range("Очередь переполнена.");
-    }*/
+        Resize();
+    }
     Buffer->Add(value);
 }
 

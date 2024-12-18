@@ -1,44 +1,43 @@
 #pragma once
+
+// \!brief Определение структуры кольцевой буфер.
 struct RingBuffer
 {
 public:
 	
-    // !brief
+    // \!brief Внутренний массив кольцевого буфера.
     int* Buffer;
 
-    // !brief
+    // \!brief Первый элемент.
     int Head;
 
-    // !brief
+    // \!brief Последний эелемент
     int Tail;
     
-    // !brief
+    // \!brief Размер данного буфера.
     int Size;
 
-    // !brief
+    // \!brief Вместимость буфера.
     int Capacity;
 
-    // !brief Конструктор.
+    // \!brief Конструктор.
     RingBuffer(int Size);
 
-    // !brief
+    // \!brief Получение последнего элемента.
     int GetElement();
 
-    // !brief
-    void Resize(int newSize);
-
-    // !brief Возвращает свободное место.
+    // \!brief Возвращает свободное место.
     int FreeSpace();
 
-    // !brief Возвращает занятое место.
+    // \!brief Возвращает занятое место.
     int OccupiedSpace();
 
-    // !brief Добавление элемента в буфер.
+    // \!brief Добавление элемента в буфер.
     void Add(int value);
 
-    // !brief Извлечение элемента из буфера.
-    int Remove();
+    // \!brief Извлечение элемента из буфера.
+    bool Remove();
 
-    // !brief Деструктор.
+    // \!brief Деструктор.
     ~RingBuffer();
 };
