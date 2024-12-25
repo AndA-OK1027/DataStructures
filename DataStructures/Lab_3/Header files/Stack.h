@@ -2,7 +2,6 @@
 struct Stack
 {
 public:
-
 	// Массив данных
 	int* Data;
 

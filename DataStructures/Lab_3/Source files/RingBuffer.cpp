@@ -20,24 +20,6 @@ int RingBuffer::OccupiedSpace()
     return Size;
 }
 
-//void RingBuffer::Resize(int newSize)
-//{
-//    int* newBuffer = new int[newSize];
-//    int elementsToCopy = (newSize < Size) ? newSize : Size;
-//
-//    for (int i = 0; i < elementsToCopy; i++)
-//    {
-//        newBuffer[i] = Buffer[(Tail + i) % Capacity];
-//    }
-//
-//    delete[] Buffer;
-//    Buffer = newBuffer;
-//    Head = elementsToCopy;
-//    Tail = 0;
-//    Capacity = newSize;
-//    Size = elementsToCopy;
-//}
-
 void RingBuffer::Add(int value)
 {
     Buffer[Tail] = value;

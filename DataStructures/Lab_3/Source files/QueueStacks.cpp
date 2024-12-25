@@ -17,13 +17,19 @@ void QueueStacks::Enqueue(int value)
 
 int QueueStacks::Dequeue()
 {
-    if (Stack2->Top == -1)
-    { // Если второй стек пуст
-        while (Stack1->Top != -1)
+    if (Stack1->GetSize() == 0)
+    {
+        throw new std::out_of_range("Очередь пуста. ");
+    }
+
+    if (Stack2->GetSize() == 0)
+    {
+        while (Stack1->GetSize() != 0)
         {
             Stack2->Push(Stack1->Pop());
         }
     }
+
     return Stack2->Pop();
 }
 

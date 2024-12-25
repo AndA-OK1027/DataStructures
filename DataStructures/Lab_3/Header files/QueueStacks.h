@@ -7,7 +7,7 @@ public:
 
     Stack* Stack1;
     Stack* Stack2;
-    
+
     // !brief Конструктор
     QueueStacks(int size);
 

@@ -19,7 +19,7 @@ public:
     void Resize();
 
     // \!brief Функция добавления в очередь
-    void Enqueue(int value);
+    void Enqueue(const int& value);
 
     // \!brief Функция извлечения из очереди
     int Dequeue();

@@ -1,15 +1,9 @@
 #include "..\Header Files\Stack.h"
 #include <iostream>
 
-int* Data;
-
-int Top; 
-
-int Capacity;
-
 Stack::Stack(int size)
 {
-    Top = -1;
+    Top = 0;
     Capacity = size;
     Data = new int[Capacity];
 }
@@ -26,23 +20,20 @@ void Stack::Resize()
 
 int Stack::GetSize()
 {
-    return Top + 1;
+    return Top;
 }
 
 void Stack::Push(int value)
 {
-    if (Top == Capacity - 1) 
-    {
-        Resize();
-    }
+    Resize();
     Data[++Top] = value;
 }
 
 int Stack::Pop()
 {
-    if (Top == -1) 
+    if (Top == 0) 
     {
         throw std::out_of_range("Стек пуст!");
     }
-    return Data[Top--];
+    return Data[--Top];
 }

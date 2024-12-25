@@ -7,7 +7,7 @@
 // Вывод стека.
 void PrintStack(Stack* stack)
 {
-    for (int i = 0; i < stack->GetSize(); i++)
+    for (int i = 0; i < stack->GetSize(); ++i)
     {
         std::cout << stack->Data[i] << " ";
     }
@@ -36,22 +36,17 @@ void PrintQueue(Queue* ringQue)
 // Вывод очереди на стеках
 void PrintStacksQueue(QueueStacks* stacksQue)
 {
-    for (int i = 0; i < stacksQue->Stack1->GetSize(); i++)
-    {
-        PrintStack(stacksQue->Stack1);
-    }
+    std::cout << "Вывод первого стека:" << std::endl;
+    PrintStack(stacksQue->Stack1);
+    std::cout << "Вывод второго стека:" << std::endl;
+    PrintStack(stacksQue->Stack2);
 }
 
 // \!brief Для работы со стеком
-void StackMenu()
+void StackMenu(Stack* stack)
 {
     while (true)
     {
-        Stack* stack = new Stack(2);
-        stack->Push(77);
-        stack->Push(13);
-        stack->Push(8);
-
         std::cout << "Текущий стек: " << std::endl;
         PrintStack(stack);
         int stackOption;
@@ -66,7 +61,7 @@ void StackMenu()
 
         case 0:
         {
-            stack->~Stack();
+            delete stack;
             return;
         } // case 0
 
@@ -117,15 +112,10 @@ void StackMenu()
 }
 
 // Для работы с кольцевым буфером.
-void RingMenu() 
+void RingMenu(RingBuffer* cb) 
 {
     while (true)
     {
-        RingBuffer* cb = new RingBuffer(3);
-        cb->Add(1);
-        cb->Add(2);
-        PrintRing(cb);
-
         std::cout << "Текущий кольцевой буфер: " << std::endl;
         PrintRing(cb);
         std::cout << "Выберете действие: " << std::endl;
@@ -143,7 +133,7 @@ void RingMenu()
 
         case 0:
         {
-            cb->~RingBuffer();
+            delete cb;
             return;
         } // case 0
 
@@ -208,93 +198,87 @@ void RingMenu()
 }
 
 // Для работы с очередбю на кольцевом буфере.
-void RingQueueMenu()
+void RingQueueMenu(Queue* ringQue)
 {
-    Queue* ringQue = new Queue(5);
-    ringQue->Enqueue(7);
-    ringQue->Enqueue(88);
-    ringQue->Enqueue(9);
+    while (true)
+    {
+        std::cout << "Текущая очередь." << std::endl;
+        PrintQueue(ringQue);
 
-    std::cout << "Текущая очередь." << std::endl;
-    PrintQueue(ringQue);
-
-    std::cout << "Выберете действие: " << std::endl;
-    std::cout << "\n1. Добавить элемент.\
+        std::cout << "Выберете действие: " << std::endl;
+        std::cout << "\n0. Выйти и удалить очередь. \
+            \n1. Добавить элемент.\
 		    \n2. Удалить элемент. " << std::endl;
 
-    int QueueChoice;
-    std::cin >> QueueChoice;
+        int QueueChoice;
+        std::cin >> QueueChoice;
 
-    switch (QueueChoice)
-    {
-
-    case 0:
-    {
-        ringQue->~Queue();
-        return;
-    }
-
-    case 1:
-    {
-        std::cout << "Введите элемент:" << std::endl;
-        int QueueValue;
-        std::cin >> QueueValue;
-
-        try
+        switch (QueueChoice)
         {
-            ringQue->Enqueue(QueueValue);
-        }
-        catch (std::out_of_range)
+
+        case 0:
         {
-            std::cout << "Невозможно добавить" << std::endl;
+            delete ringQue;
+            return;
         }
 
-        std::cout << "Текущая очередь." << std::endl;
-        PrintQueue(ringQue);
-
-        break;
-    } // case 1
-
-    case 2:
-    {
-        try
+        case 1:
         {
-            ringQue->Dequeue();
-        }
-        catch (std::out_of_range)
+            std::cout << "Введите элемент:" << std::endl;
+            int QueueValue;
+            std::cin >> QueueValue;
+
+            try
+            {
+                ringQue->Enqueue(QueueValue);
+            }
+            catch (std::out_of_range)
+            {
+                std::cout << "Невозможно добавить" << std::endl;
+            }
+
+            std::cout << "Текущая очередь." << std::endl;
+            PrintQueue(ringQue);
+
+            break;
+        } // case 1
+
+        case 2:
         {
-            std::cout << "empty" << std::endl;
-        }
+            try
+            {
+                ringQue->Dequeue();
+            }
+            catch (std::out_of_range)
+            {
+                std::cout << "empty" << std::endl;
+            }
 
-        std::cout << "Текущая очередь." << std::endl;
-        PrintQueue(ringQue);
+            std::cout << "Текущая очередь." << std::endl;
+            PrintQueue(ringQue);
 
-        break;
-    } // case 2
+            break;
+        } // case 2
 
-    default:
-    {
-        std::cout << "Выберете команду.." << std::endl;
-    } // default
+        default:
+        {
+            std::cout << "Выберете команду.." << std::endl;
+        } // default
 
-    } // switch
+        } // switch
+    } // while true
 }
 
 // Для работы с очередью на стеках.
-void StacksQueueMenu()
+void StacksQueueMenu(QueueStacks* stacksQue)
 {
-    QueueStacks* stacksQue = new QueueStacks(4);
-    stacksQue->Enqueue(8);
-    stacksQue->Enqueue(9);
-    stacksQue->Enqueue(77);
-
     while (true)
     {
-
         std::cout << "Текущая очередь." << std::endl;
         PrintStacksQueue(stacksQue);
         std::cout << "Выберете действие: " << std::endl;
-        std::cout << "\n1. Добавить элемент.\
+        std::cout << "\n0. Удалить очередь и выйти. \
+            \n1. Добавить элемент.\
 		    \n2. Удалить элемент. " << std::endl;
         int SQueueChoice;
         std::cin >> SQueueChoice;
@@ -303,7 +287,7 @@ void StacksQueueMenu()
 
         case 0:
         {
-            stacksQue->~QueueStacks();
+            delete stacksQue;
             return;
         }
 
@@ -333,7 +317,7 @@ void StacksQueueMenu()
         {
             try
             {
-                stacksQue->Dequeue();
+                std::cout << stacksQue->Dequeue() << std::endl;
             }
             catch (std::out_of_range)
             {
@@ -362,10 +346,9 @@ int main()
 {
     setlocale(LC_ALL, "ru");
 
-
-    while (true)
+    int structChoice;
+    do
     {
-        int structChoice;
         std::cout << "Выберете структуру: " << std::endl;
         std::cout << "\n0. Выйти.\
             \n1. Стек.\
@@ -378,41 +361,58 @@ int main()
         {
         case 0:
         {
-            return;
+            break;
         }
 
         case 1:
         {
-            StackMenu();
+            Stack* stack = new Stack(3);
+            stack->Push(77);
+            stack->Push(13);
+            stack->Push(8);
+            StackMenu(stack);
+
             break;
         }
 
         case 2:
         {
-            RingMenu();
+            RingBuffer* cb = new RingBuffer(3);
+            cb->Add(1);
+            cb->Add(2);
+            PrintRing(cb);
+            RingMenu(cb);
             break;
         }
 
         case 3:
         {
-            RingQueueMenu();
+            Queue* ringQue = new Queue(5);
+            ringQue->Enqueue(7);
+            ringQue->Enqueue(88);
+            ringQue->Enqueue(9);
+            RingQueueMenu(ringQue);
             break;
         }
 
         case 4:
         {
-            StacksQueueMenu();
+            QueueStacks* stacksQue = new QueueStacks(4);
+            stacksQue->Enqueue(8);
+            stacksQue->Enqueue(9);
+            stacksQue->Enqueue(77);
+            StacksQueueMenu(stacksQue);
             break;
         }
 
         default:
         {
             std::cout << "Выберите команду: " << std::endl;
-        }
+        } // default
 
-        }
+        } // switch
 
-    }
+    } while (structChoice != 0);
 
     return 0;
 }

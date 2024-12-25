@@ -16,9 +16,10 @@ void Queue::Resize()
     Buffer->Capacity *= 2;
 }
 
-void Queue::Enqueue(int value) 
+void Queue::Enqueue(const int& value) 
 {
-    if (GetSize() == Buffer->Capacity)
+
+    if (Buffer->FreeSpace() == 1)
     {
         Resize();
     }
