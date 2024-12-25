@@ -21,21 +21,27 @@ public:
     int Capacity;
 
     // \!brief Конструктор.
-    RingBuffer(int Size);
+    // \!param size - размер 
+    RingBuffer(int size);
 
     // \!brief Получение последнего элемента.
+    // \!returns Последний добавленный элемент.
     int GetElement();
 
     // \!brief Возвращает свободное место.
+    // \!returns Оставшееся свободное место в буфере
     int FreeSpace();
 
     // \!brief Возвращает занятое место.
+    // \!returns Занятое место в буфере
     int OccupiedSpace();
 
     // \!brief Добавление элемента в буфер.
+    // \!param value - значение для добавления. 
     void Add(int value);
 
     // \!brief Извлечение элемента из буфера.
+    // \!returns true - если элемент удаляется, false - если нет
     bool Remove();
 
     // \!brief Деструктор.

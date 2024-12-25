@@ -1,39 +1,45 @@
 #include "..\Header Files\Stack.h"
 #include <iostream>
 
-Stack::Stack(int size)
+Stack::Stack(int size) : Size(size), Top(-1)
 {
-    Top = 0;
-    Capacity = size;
-    Data = new int[Capacity];
+    Data = new int[size];
 }
+
+Stack::Stack() : Data(nullptr), Size(0), Top(-1) {}
 
 Stack::~Stack()
 {
-    delete[] Data;
+    while (Top != -1)
+    {
+        Pop();
+    }
 }
 
 void Stack::Resize()
 {
-    Capacity ++;
+    Size++;
 }
 
 int Stack::GetSize()
 {
-    return Top;
+    return Top + 1;
 }
 
 void Stack::Push(int value)
 {
-    Resize();
     Data[++Top] = value;
+    Resize();
 }
 
 int Stack::Pop()
 {
-    if (Top == 0) 
+    if (Top == -1) 
     {
         throw std::out_of_range("Стек пуст!");
     }
-    return Data[--Top];
+
+    Size--;
+
+    return Data[Top--];
 }

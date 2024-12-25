@@ -10,18 +10,22 @@ public:
     RingBuffer* Buffer;
 
     // \!brief 
+    // \!returns Размер очереди.
     int GetSize();
 
     // \!brief Конструктор
+    // \!param Размер очереди.
     Queue(int size);
 
     // \!brief Увеличение размера очереди.
     void Resize();
 
     // \!brief Функция добавления в очередь
-    void Enqueue(const int& value);
+    // \!param Значение для добавления.
+    void Enqueue(int& value);
 
     // \!brief Функция извлечения из очереди
+    // \!returns Указатель на очередь.
     int Dequeue();
 
     // \!brief Освобождение памяти
