@@ -1,6 +1,7 @@
 #include "..\Header Files\QueueStacks.h"
 #include <iostream>
 
+// TODO: РџРѕР»РµС‚РµР»Р° РєРѕРґРёСЂРѕРІРєР°
 QueueStacks::QueueStacks(int size): Stack1(size), Stack2(size) {}
 
 void QueueStacks::Enqueue(int value)
@@ -20,7 +21,7 @@ int QueueStacks::Dequeue()
 
     if (Stack2.Top == -1)
     {
-        throw std::out_of_range("Очередь пуста, невозможно извлечь элемент.");
+        throw std::out_of_range("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
     }
     return Stack2.Pop();
 }
@@ -54,6 +55,7 @@ int* QueueStacks::GetData()
 
 QueueStacks::~QueueStacks()
 {
+    // TODO: РџРѕС‡РµРјСѓ С‚Р°РєР°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ? delete РЅРµРґРѕСЃС‚Р°С‚С‡РЅРѕ? 
     Stack1.~Stack();
     Stack2.~Stack();
 }

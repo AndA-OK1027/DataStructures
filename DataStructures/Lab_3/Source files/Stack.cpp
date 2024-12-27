@@ -1,6 +1,7 @@
 #include "..\Header Files\Stack.h"
 #include <iostream>
 
+// TODO: Полетела кодировка
 Stack::Stack(int size) : Size(size), Top(-1)
 {
     Data = new int[size];
@@ -36,7 +37,7 @@ int Stack::Pop()
 {
     if (Top == -1) 
     {
-        throw std::out_of_range("���� ����!");
+        throw std::out_of_range("���� ����!");
     }
 
     Size--;

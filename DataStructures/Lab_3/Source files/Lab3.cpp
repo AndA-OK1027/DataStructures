@@ -6,6 +6,7 @@
 
 #include <string>
 
+// TODO: Комментарий
 int CheckInput()
 {
     std::cout << "Ваш ввод: ";
@@ -38,6 +39,7 @@ int CheckInput()
     }
 }
 
+// TODO: Сделать единообразные комментарии, как в .h файлах
 // Вывод стека.
 void PrintStack(Stack* stack)
 {

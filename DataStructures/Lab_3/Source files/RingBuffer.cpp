@@ -1,6 +1,7 @@
 #include "..\Header Files\RingBuffer.h"
 #include <iostream>
 
+// TODO: РџРѕР»РµС‚РµР»Р° РєРѕРґРёСЂРѕРІРєР°
 RingBuffer::RingBuffer(int size)
 {
     Capacity = size;
@@ -38,7 +39,7 @@ bool RingBuffer::Remove()
 {
     if (Size == 0)
     {
-        throw std::out_of_range("Кольцевой буфер пуст, невозможно извлечь элемент.");
+        throw std::out_of_range("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.");
     }
     int data = Buffer[Tail];
     Tail = (Tail + 1) % Capacity;
