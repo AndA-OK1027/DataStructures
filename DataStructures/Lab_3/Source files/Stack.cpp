@@ -1,4 +1,4 @@
-#include "..\Header Files\Stack.h"
+﻿#include "..\Header Files\Stack.h"
 #include <iostream>
 
 // TODO: Полетела кодировка
@@ -15,6 +15,8 @@ Stack::~Stack()
     {
         Pop();
     }
+
+    delete[] Data;
 }
 
 void Stack::Resize()
@@ -37,7 +39,7 @@ int Stack::Pop()
 {
     if (Top == -1) 
     {
-        throw std::out_of_range("���� ����!");
+        throw std::out_of_range("Стек пуст!");
     }
 
     Size--;

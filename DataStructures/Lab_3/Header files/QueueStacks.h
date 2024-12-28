@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Stack.h"
 
 // TODO: Полетела кодировка
@@ -6,32 +6,32 @@ struct QueueStacks
 {
 public: 
 
-    // \!brief ���� ��� ����������.
-    Stack Stack1;
+    // \!brief Стек для добавления.
+    Stack* Stack1;
 
-    // \!brief ���� ��� ����������.
-    Stack Stack2;
+    // \!brief Стек для удаления.
+    Stack* Stack2;
 
-    // \!brief �����������
-    // \!param ������ �������.
+    // \!brief Конструктор.
+    // \!param size - размер массива.
     QueueStacks(int size);
 
-    // \!brief ������� ���������� � �������
-    // \!param �������� ��� ����������.
+    // \!brief Добавление элемента в очередь.
+    // \!param Указатель на массив.
     void Enqueue(int value);
 
-    // \!brief ������� ���������� �� �������
-    // \!returns ��������� �� �������.
+    // \!brief Удаляет элемент из очереди.
+    // \!returns Указатель на массив.
     int Dequeue();
 
-    // \!brief ���������� ������ ������ 
-    // \!returns ��������� �� �������.
+    // \!brief Возвращает массив данных.
+    // \!returns Указатель на массив.
     int* GetData();
 
-    // \!brief ���������� ������ �������. 
-    // \!returns ������ �������.
+    // \!brief Вспомогательная функция для получения размера. 
+    // \!returns Размер очереди.
     int GetSize();
 
-    // \!brief ����������.
+    // \!brief Деструктор.
     ~QueueStacks();
 };

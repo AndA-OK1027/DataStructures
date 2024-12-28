@@ -1,4 +1,4 @@
-#include "..\Header Files\RingBuffer.h"
+﻿#include "..\Header Files\RingBuffer.h"
 #include <iostream>
 
 // TODO: Полетела кодировка
@@ -39,7 +39,7 @@ bool RingBuffer::Remove()
 {
     if (Size == 0)
     {
-        throw std::out_of_range("��������� ����� ����, ���������� ������� �������.");
+        throw std::out_of_range("Невозможно удалить, кольцевой буфер пуст.");
     }
     int data = Buffer[Tail];
     Tail = (Tail + 1) % Capacity;

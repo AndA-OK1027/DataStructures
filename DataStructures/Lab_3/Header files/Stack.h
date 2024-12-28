@@ -1,40 +1,40 @@
-#pragma once
+﻿#pragma once
 
 // TODO: Полетела кодировка
 struct Stack
 {
 public:
-	// \!brief ������ ������
+	// \!brief Массив данных.
 	int* Data;
 
-	// \!brief ������ ������� �����.
+	// \!brief Индекс вершины стека.
 	int Top;
 	
-	// \!brief ������� �����.
+	// \!brief Размер стека.
 	int Size;
 
-	// \!brief ���������� ������.
-	// \!returns ������ �����.
+	// \!brief Вмпомогательная функция для получения размера стека.
+	// \!returns Размер стека.
 	int GetSize();
 
-	// \!brief ����������.
+	// \!brief Увеличение размера.
 	void Resize();
 
-	// \!brief ���������� � �����
-	// \!param value - �������� ��� ����������.
+	// \!brief Добавление в стек.
+	// \!param value - значение для добавления.
 	void Push(int value);
 
-	// \!brief �������� ����������
-	// \!returns ��������� �� ����.
+	// \!brief Удаление элемента
+	// \!returns Удаленный элемент.
 	int Pop();
 
-	// \!brief ����������� �� ���������.
+	// \!brief Конструктор по умолчанию.
 	Stack();
 
-	// \!brief �����������
-	// \!param size - ������.
+	// \!brief Конструктор.
+	// \!param size - Размер.
 	Stack(int size);
 
-	// \!brief ����������.
+	// \!brief Деструктор.
 	~Stack();
 };

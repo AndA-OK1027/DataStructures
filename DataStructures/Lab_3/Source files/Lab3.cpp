@@ -6,7 +6,9 @@
 
 #include <string>
 
-// TODO: Комментарий
+// TODO: Комментарий +
+// \!brief Проверяет ввод пользователя на числовое значение.
+// \!returns Число, введенное пользователем, если успешно преобразована строка из консоли. 
 int CheckInput()
 {
     std::cout << "Ваш ввод: ";
@@ -39,8 +41,9 @@ int CheckInput()
     }
 }
 
-// TODO: Сделать единообразные комментарии, как в .h файлах
-// Вывод стека.
+// TODO: Сделать единообразные комментарии, как в .h файлах +
+// \!brief Вывод стека.
+// \!param stack - Стек для вывода.
 void PrintStack(Stack* stack)
 {
     for (int i = 0; i < stack->GetSize(); ++i)
@@ -50,7 +53,8 @@ void PrintStack(Stack* stack)
     std::cout << std::endl;
 }
 
-// Вывод кольцевого буфера.
+// \!brief Вывод кольцевого буфера.
+// \!param cb - Кольцевой буфер для вывода.
 void PrintRing(RingBuffer* cb)
 {
     for (int i = 0; i < cb->Size; ++i)
@@ -60,7 +64,8 @@ void PrintRing(RingBuffer* cb)
     std::cout << std::endl;
 }
 
-// Вывод очереди на кольцевом буфере.
+// \!brief Вывод очереди на кольцевом буфере.
+// \!param ringQue - Очередь для вывода.
 void PrintQueue(Queue* ringQue)
 {
     for (int i = 0; i < ringQue->GetSize(); i++)
@@ -70,7 +75,8 @@ void PrintQueue(Queue* ringQue)
     std::cout << std::endl;
 }
 
-// Вывод очереди на стеках
+// \!brief Вывод очереди на стеках
+// \!param stacksQue - Очередь для вывода.
 void PrintStacksQueue(QueueStacks* stacksQue)
 {
     int* data = stacksQue->GetData();
@@ -83,6 +89,7 @@ void PrintStacksQueue(QueueStacks* stacksQue)
 }
 
 // \!brief Для работы со стеком
+// \!param stack - Стек для меню.
 void StackMenu(Stack* stack)
 {
     while (true)
@@ -146,7 +153,8 @@ void StackMenu(Stack* stack)
     } // while true
 }
 
-// Для работы с кольцевым буфером.
+// \!brief Для работы с кольцевым буфером.
+// \!param cb - Кольцевой буфер для меню.
 void RingMenu(RingBuffer* cb) 
 {
     while (true)
@@ -225,7 +233,8 @@ void RingMenu(RingBuffer* cb)
     }
 }
 
-// Для работы с очередбю на кольцевом буфере.
+// \!brief Для работы с очередью на кольцевом буфере.
+// \!param ringQue - Очередь для меню.
 void RingQueueMenu(Queue* ringQue)
 {
     while (true)
@@ -291,7 +300,8 @@ void RingQueueMenu(Queue* ringQue)
     } // while true
 }
 
-// Для работы с очередью на стеках.
+// \!brief Для работы с очередью на стеках.
+// \!param stacksQue - Очередь для меню.
 void StacksQueueMenu(QueueStacks* stacksQue)
 {
     while (true)
@@ -357,6 +367,7 @@ void StacksQueueMenu(QueueStacks* stacksQue)
 
 }
 
+// \!brief Главное меню.
 int main()
 {
     setlocale(LC_ALL, "ru");
