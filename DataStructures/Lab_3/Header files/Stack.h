@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-// TODO: Полетела кодировка
+// \!brief Структура данных стек.
 struct Stack
 {
 public:

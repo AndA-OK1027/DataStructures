@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-// TODO: Полетела кодировка
 // \!brief Структура, описывающая кольцевой буфер.
 struct RingBuffer
 {

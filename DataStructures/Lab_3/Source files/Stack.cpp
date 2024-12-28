@@ -1,7 +1,6 @@
 ﻿#include "..\Header Files\Stack.h"
 #include <iostream>
 
-// TODO: Полетела кодировка
 Stack::Stack(int size) : Size(size), Top(-1)
 {
     Data = new int[size];

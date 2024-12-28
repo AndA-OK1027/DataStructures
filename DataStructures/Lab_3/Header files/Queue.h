@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "RingBuffer.h"
 
-// TODO: Полетела кодировка
 // !brief Структура с определением очереди на основе кольцевого буфера.
 struct Queue
 {

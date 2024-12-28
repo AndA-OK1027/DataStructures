@@ -1,7 +1,6 @@
 ﻿#include "..\Header Files\RingBuffer.h"
 #include <iostream>
 
-// TODO: Полетела кодировка
 RingBuffer::RingBuffer(int size)
 {
     Capacity = size;

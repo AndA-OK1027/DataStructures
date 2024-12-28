@@ -1,7 +1,6 @@
 ﻿#include "..\Header Files\QueueStacks.h"
 #include <iostream>
 
-// TODO: Полетела кодировка
 QueueStacks::QueueStacks(int size)
 {
     Stack1 = new Stack(size);
@@ -60,8 +59,6 @@ int* QueueStacks::GetData()
 
 QueueStacks::~QueueStacks()
 {
-    // TODO: Почему такая реализация? delete недостатчно?  
-    // Теперь стеки создаются через new и можно использовать delete.
     delete Stack1;
     delete Stack2;
 }

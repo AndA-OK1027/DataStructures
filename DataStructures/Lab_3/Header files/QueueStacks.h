@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "Stack.h"
 
-// TODO: Полетела кодировка
 struct QueueStacks 
 {
 public: 
