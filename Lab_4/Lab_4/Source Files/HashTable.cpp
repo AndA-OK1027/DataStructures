@@ -1,4 +1,4 @@
-#include "..\Header Files\HashTable.h"
+ï»¿#include "..\Header Files\HashTable.h"
 #include "..\Header Files\HashTableItem.h"
 #include <vector>
 #include <random>
@@ -24,12 +24,12 @@ int HashTable::Hash(string key)
 	{
 		table[i] = i;
 	}
-	// Èñïîëüçóåì ñëó÷àéíîå óñòðîéñòâî äëÿ ãåíåðàöèè ñëó÷àéíûõ ÷èñåë
+	// Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÐ¼ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ð¾Ðµ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾ Ð´Ð»Â¤ Ð³ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ð¸ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ñ… Ñ‡Ð¸ÑÐµÐ»
 	std::random_device rd;
 	std::default_random_engine engine(rd());
 	std::shuffle(table.begin(), table.end(), engine);
 
-	// Äëèíà ñîîáùåíèÿ ïî ìîäóëþ 256
+	// Ð”Ð»Ð¸Ð½Ð° ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Â¤ Ð¿Ð¾ Ð¼Ð¾Ð´ÑƒÐ»ÑŽ 256
 	int hash = key.length() % 256; 
 	for (char i : key)
 	{
@@ -72,7 +72,7 @@ void HashTable::Insert(string key, string value)
 {
 	int index = Hash(key) % Size;
 
-	// Ïïðîâåðêà íà äóáëèêàòû.
+	// ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð½Ð° Ð´ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ‚Ñ‹.
 	for (HashTableItem* current = Table[index]; current != nullptr; current = current->Next)
 	{
 		if (current->Key == key)

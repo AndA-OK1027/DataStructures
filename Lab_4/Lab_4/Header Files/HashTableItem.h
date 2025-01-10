@@ -1,25 +1,25 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 
 using namespace std;
 
-// !\brief Определение структуры элемента таблицы.
+// !\brief РћРїСЂРµРґРµР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ СЌР»РµРјРµРЅС‚Р° С‚Р°Р±Р»РёС†С‹.
 struct HashTableItem
 {
-	// !\brief Ключ
+	// !\brief РљР»СЋС‡
 	string Key;
 	 
-	// !\brief Значение
+	// !\brief Р—РЅР°С‡РµРЅРёРµ
 	string Value;
 
-	// !\brief Указатель на следующую пару.
+	// !\brief РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ РїР°СЂСѓ.
 	HashTableItem* Next;
 
-	// !\brief Конструктор элемета.
-	// !\param key - ключ.
-	// !\param value - значение.
+	// !\brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЌР»РµРјРµС‚Р°.
+	// !\param key - РєР»СЋС‡.
+	// !\param value - Р·РЅР°С‡РµРЅРёРµ.
 	HashTableItem(string key, string value);
 
-	// !\brief Конструктор элемета.
+	// !\brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЌР»РµРјРµС‚Р°.
 	HashTableItem();
 };

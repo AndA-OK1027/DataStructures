@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <memory>
 
 #include "../Header Files/BinaryTree.h"
@@ -10,28 +10,28 @@ BinaryTree::BinaryTree() : Root(nullptr) {}
 
 TreeNode* BinaryTree::AddNode(TreeNode* node, int value)
 {
-    // Если корня нет, создаем его.
+    // Р•СЃР»Рё РєРѕСЂРЅСЏ РЅРµС‚, СЃРѕР·РґР°РµРј РµРіРѕ.
     if (node == nullptr) 
     {
         return new TreeNode(value);
     }
-    // Если ключ меньше корня, добавляем в левое поддерево;
+    // Р•СЃР»Рё РєР»СЋС‡ РјРµРЅСЊС€Рµ РєРѕСЂРЅСЏ, РґРѕР±Р°РІР»СЏРµРј РІ Р»РµРІРѕРµ РїРѕРґРґРµСЂРµРІРѕ;
     if (node->key > value) 
     {
         node->left = AddNode(node->left, value);
     }
-    // Иначе в правое.
+    // РРЅР°С‡Рµ РІ РїСЂР°РІРѕРµ.
     else if (node->key < value) 
     {
         node->right = AddNode(node->right, value);
     }
-    // Возвращаем неизмененный указатель на узел.
+    // Р’РѕР·РІСЂР°С‰Р°РµРј РЅРµРёР·РјРµРЅРµРЅРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СѓР·РµР».
     return node; 
 }
 
 TreeNode* BinaryTree::FindNode(TreeNode* node, int value)
 {
-    // Возвращаем указатель на переданный узел, если дерево пусто или элемент найден.
+    // Р’РѕР·РІСЂР°С‰Р°РµРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРµРґР°РЅРЅС‹Р№ СѓР·РµР», РµСЃР»Рё РґРµСЂРµРІРѕ РїСѓСЃС‚Рѕ РёР»Рё СЌР»РµРјРµРЅС‚ РЅР°Р№РґРµРЅ.
     if (node == nullptr || node->key == value) 
     {
         return node;
@@ -49,13 +49,13 @@ TreeNode* BinaryTree::FindNode(TreeNode* node, int value)
 
 TreeNode* BinaryTree::DeleteNode(TreeNode* node, int value)
 {
-    // Нечего удалять
+    // РќРµС‡РµРіРѕ СѓРґР°Р»СЏС‚СЊ
     if (node == nullptr) 
     {
         return node;
     }
 
-    //  Удаляем рекурсивно.
+    //  РЈРґР°Р»СЏРµРј СЂРµРєСѓСЂСЃРёРІРЅРѕ.
     if (value < node->key) 
     {
         node->left = DeleteNode(node->left, value);
@@ -66,7 +66,7 @@ TreeNode* BinaryTree::DeleteNode(TreeNode* node, int value)
     }
     else 
     {
-        // Узел с одним потомком или без потомков
+        // РЈР·РµР» СЃ РѕРґРЅРёРј РїРѕС‚РѕРјРєРѕРј РёР»Рё Р±РµР· РїРѕС‚РѕРјРєРѕРІ
         if (node->left == nullptr) 
         {
             TreeNode* temp = node->right;
@@ -80,11 +80,11 @@ TreeNode* BinaryTree::DeleteNode(TreeNode* node, int value)
             return temp;
         }
 
-        // Узел с двумя потомками: получить минимальный узел из правого поддерева
+        // РЈР·РµР» СЃ РґРІСѓРјСЏ РїРѕС‚РѕРјРєР°РјРё: РїРѕР»СѓС‡РёС‚СЊ РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СѓР·РµР» РёР· РїСЂР°РІРѕРіРѕ РїРѕРґРґРµСЂРµРІР°
         TreeNode* temp = FindMinNode(node->right);
-        // Копируем значение минимального узла
+        // РљРѕРїРёСЂСѓРµРј Р·РЅР°С‡РµРЅРёРµ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СѓР·Р»Р°
         node->key = temp->key; 
-        // Удаляем минимальный узел
+        // РЈРґР°Р»СЏРµРј РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СѓР·РµР»
         node->right = DeleteNode(node->right, temp->key); 
     }
     return node;

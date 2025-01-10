@@ -1,4 +1,4 @@
-#include "../Header Files/HashTable.h"
+﻿#include "../Header Files/HashTable.h"
 #include "../Header Files/Dictionary.h"
 
 Dictionary::Dictionary(int initialSize): _dictionary(initialSize) {}

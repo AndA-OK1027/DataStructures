@@ -1,15 +1,15 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <string>
 #include "..\Header Files\BinaryTree.h"
 #include "..\Header Files\Treap.h"
 
 using namespace std;
 
-// \!brief Проверяет ввод пользователя на числовое значение.
-// \!returns Число, введенное пользователем, если успешно преобразована строка из консоли. 
+// \!brief РџСЂРѕРІРµСЂСЏРµС‚ РІРІРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° С‡РёСЃР»РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ.
+// \!returns Р§РёСЃР»Рѕ, РІРІРµРґРµРЅРЅРѕРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, РµСЃР»Рё СѓСЃРїРµС€РЅРѕ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅР° СЃС‚СЂРѕРєР° РёР· РєРѕРЅСЃРѕР»Рё. 
 int CheckInput()
 {
-    std::cout << "Ваш ввод: ";
+    std::cout << "Р’Р°С€ РІРІРѕРґ: ";
 
     std::string input;
 
@@ -19,28 +19,28 @@ int CheckInput()
         {
             std::cin >> input;
             size_t pos;
-            // попытка преобразовать строку в число
+            // РїРѕРїС‹С‚РєР° РїСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ СЃС‚СЂРѕРєСѓ РІ С‡РёСЃР»Рѕ
             int value = std::stoi(input, &pos);
-            // проверка на то, все ли символы строки преобразованы.
+            // РїСЂРѕРІРµСЂРєР° РЅР° С‚Рѕ, РІСЃРµ Р»Рё СЃРёРјРІРѕР»С‹ СЃС‚СЂРѕРєРё РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅС‹.
             if (pos == input.length())
             {
                 return value;
             }
             else
             {
-                std::cout << "Введено неверное значение (нечисловые символы). Повторите ввод: ";
+                std::cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ (РЅРµС‡РёСЃР»РѕРІС‹Рµ СЃРёРјРІРѕР»С‹). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
             }
         }
         catch (std::invalid_argument& e)
         {
-            std::cout << "Введено неверное значение (не число). Повторите ввод: ";
+            std::cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ (РЅРµ С‡РёСЃР»Рѕ). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
         }
 
     }
 }
 
-// \!brief Вывод двоичного дерева.
-// \!param node - корень.
+// \!brief Р’С‹РІРѕРґ РґРІРѕРёС‡РЅРѕРіРѕ РґРµСЂРµРІР°.
+// \!param node - РєРѕСЂРµРЅСЊ.
 void PrintBinaryTree(TreeNode* node)
 {
     if (node == nullptr)
@@ -56,8 +56,8 @@ void PrintBinaryTree(TreeNode* node)
     std::cout << ")";
 }
 
-// \!brief Вывод декартового дерева.
-// \!param node - корень.
+// \!brief Р’С‹РІРѕРґ РґРµРєР°СЂС‚РѕРІРѕРіРѕ РґРµСЂРµРІР°.
+// \!param node - РєРѕСЂРµРЅСЊ.
 void PrintTreap(TreapNode* node)
 {
     if (node == nullptr)
@@ -73,19 +73,19 @@ void PrintTreap(TreapNode* node)
     std::cout << ")";
 }
 
-// \!brief Для работы с декартовым деревом.
-// \!param treap - дерево.
+// \!brief Р”Р»СЏ СЂР°Р±РѕС‚С‹ СЃ РґРµРєР°СЂС‚РѕРІС‹Рј РґРµСЂРµРІРѕРј.
+// \!param treap - РґРµСЂРµРІРѕ.
 void TreapMenu(Treap* treap)
 {
     while (true)
     {
-        std::cout << "Текущий дерево: " << std::endl;
+        std::cout << "РўРµРєСѓС‰РёР№ РґРµСЂРµРІРѕ: " << std::endl;
         PrintTreap(treap->Root);
-        std::cout << "Выберете действие: " << std::endl;
-        std::cout << "\n0. Выйти и удалить дерево.\
-            \n1.Добавить элемент.\
-            \n2.Удалить элемент.\
-		    \n3. Найти элемент. " << std::endl;
+        std::cout << "Р’С‹Р±РµСЂРµС‚Рµ РґРµР№СЃС‚РІРёРµ: " << std::endl;
+        std::cout << "\n0. Р’С‹Р№С‚Рё Рё СѓРґР°Р»РёС‚СЊ РґРµСЂРµРІРѕ.\
+            \n1.Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚.\
+            \n2.РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚.\
+		    \n3. РќР°Р№С‚Рё СЌР»РµРјРµРЅС‚. " << std::endl;
         int treeOption = CheckInput();
 
         switch (treeOption)
@@ -98,7 +98,7 @@ void TreapMenu(Treap* treap)
 
         case 1:
         {
-            std::cout << "Введите элемент:" << std::endl;
+            std::cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚:" << std::endl;
             int AddValue;
             std::cin >> AddValue;
             treap->Insert(AddValue);
@@ -107,7 +107,7 @@ void TreapMenu(Treap* treap)
 
         case 2:
         {
-            std::cout << "Введите элемент:" << std::endl;
+            std::cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚:" << std::endl;
             int RemoveValue;
             std::cin >> RemoveValue;
             try
@@ -116,7 +116,7 @@ void TreapMenu(Treap* treap)
             }
             catch (exception)
             {
-                cout << "Ошибка" << endl;
+                cout << "РћС€РёР±РєР°" << endl;
             }
             break;
             
@@ -124,30 +124,30 @@ void TreapMenu(Treap* treap)
 
         case 3:
         {
-            std::cout << "Введите элемент:" << std::endl;
+            std::cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚:" << std::endl;
             int FindValue;
             std::cin >> FindValue;
             try
             {
                 if (treap->Search(FindValue) == nullptr)
                 {
-                    cout << "Не найден" << endl;
+                    cout << "РќРµ РЅР°Р№РґРµРЅ" << endl;
                 }
                 else
                 {
-                    cout << "Найден" << endl;
+                    cout << "РќР°Р№РґРµРЅ" << endl;
                 }
             }
             catch (exception)
             {
-                cout << "Ошибка" << endl;
+                cout << "РћС€РёР±РєР°" << endl;
             }
             break;
         }// 3
 
         default:
         {
-            std::cout << "Выберите команду: " << std::endl;
+            std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РєРѕРјР°РЅРґСѓ: " << std::endl;
         } // default
 
         } //switch
@@ -155,21 +155,21 @@ void TreapMenu(Treap* treap)
     } // while true
 }
 
-// \!brief Для работы с декартовым деревом.
-// \!param treap - дерево.
+// \!brief Р”Р»СЏ СЂР°Р±РѕС‚С‹ СЃ РґРµРєР°СЂС‚РѕРІС‹Рј РґРµСЂРµРІРѕРј.
+// \!param treap - РґРµСЂРµРІРѕ.
 void BinaryTreeMenu(BinaryTree* bst)
 {
     while (true)
     {
-        std::cout << "Текущий дерево: " << std::endl;
+        std::cout << "РўРµРєСѓС‰РёР№ РґРµСЂРµРІРѕ: " << std::endl;
         PrintBinaryTree(bst->Root);
-        std::cout << "Выберете действие: " << std::endl;
-        std::cout << "\n0. Выйти и удалить дерево.\
-            \n1. Добавить элемент.\
-            \n2. Удалить элемент.\
-            \n3. Вывести максимальный элемент.\
-		    \n4. Вывести минимальный элемент.\
-            \n5. Найти элемент. " << std::endl;
+        std::cout << "Р’С‹Р±РµСЂРµС‚Рµ РґРµР№СЃС‚РІРёРµ: " << std::endl;
+        std::cout << "\n0. Р’С‹Р№С‚Рё Рё СѓРґР°Р»РёС‚СЊ РґРµСЂРµРІРѕ.\
+            \n1. Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚.\
+            \n2. РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚.\
+            \n3. Р’С‹РІРµСЃС‚Рё РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚.\
+		    \n4. Р’С‹РІРµСЃС‚Рё РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚.\
+            \n5. РќР°Р№С‚Рё СЌР»РµРјРµРЅС‚. " << std::endl;
         int treeOption = CheckInput();
 
         switch (treeOption)
@@ -182,7 +182,7 @@ void BinaryTreeMenu(BinaryTree* bst)
 
         case 1:
         {
-            std::cout << "Введите элемент:" << std::endl;
+            std::cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚:" << std::endl;
             int AddValue;
             std::cin >> AddValue;
             bst->Insert(AddValue);
@@ -191,7 +191,7 @@ void BinaryTreeMenu(BinaryTree* bst)
 
         case 2:
         {
-            std::cout << "Введите элемент:" << std::endl;
+            std::cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚:" << std::endl;
             int RemoveValue;
             std::cin >> RemoveValue;
             try
@@ -200,51 +200,51 @@ void BinaryTreeMenu(BinaryTree* bst)
             }
             catch (exception)
             {
-                cout << "Ошибка" << endl;
+                cout << "РћС€РёР±РєР°" << endl;
             }
             break;
         }// 2
 
         case 3:
         {
-            std::cout << "Максимальный элемент:" << std::endl;
+            std::cout << "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚:" << std::endl;
             cout << bst->FindMax() << endl;
             break;
         }// 3
 
         case 4:
         {
-            std::cout << "Минимальный элемент:" << std::endl;
+            std::cout << "РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚:" << std::endl;
             cout << bst->FindMin() << endl;
             break;
         }
 
         case 5:
         {
-            std::cout << "Введите элемент:" << std::endl;
+            std::cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚:" << std::endl;
             int FindValue;
             std::cin >> FindValue;
             try
             {
                 if (bst->Search(FindValue) == nullptr)
                 {
-                    cout << "Не найден" << endl;
+                    cout << "РќРµ РЅР°Р№РґРµРЅ" << endl;
                 }
                 else
                 {
-                    cout << "Найден" << endl;
+                    cout << "РќР°Р№РґРµРЅ" << endl;
                 }
             }
             catch (exception)
             {
-                cout << "Ошибка" << endl;
+                cout << "РћС€РёР±РєР°" << endl;
             }
             break;
         }
 
         default:
         {
-            std::cout << "Выберите команду: " << std::endl;
+            std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РєРѕРјР°РЅРґСѓ: " << std::endl;
         } // default
 
         } //switch
@@ -261,10 +261,10 @@ int main()
 
     do
     {
-        std::cout << "Выберете структуру: " << std::endl;
-        std::cout << "\n0. Выйти.\
-            \n1. Двоичное дерево поиска.\
-			\n2. Декартово дерево." << std::endl;
+        std::cout << "Р’С‹Р±РµСЂРµС‚Рµ СЃС‚СЂСѓРєС‚СѓСЂСѓ: " << std::endl;
+        std::cout << "\n0. Р’С‹Р№С‚Рё.\
+            \n1. Р”РІРѕРёС‡РЅРѕРµ РґРµСЂРµРІРѕ РїРѕРёСЃРєР°.\
+			\n2. Р”РµРєР°СЂС‚РѕРІРѕ РґРµСЂРµРІРѕ." << std::endl;
         structChoice = CheckInput();
 
         switch (structChoice)
@@ -290,7 +290,7 @@ int main()
 
         default:
         {
-            std::cout << "Выберите команду: " << std::endl;
+            std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РєРѕРјР°РЅРґСѓ: " << std::endl;
         } // default
 
         } // switch

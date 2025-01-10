@@ -1,55 +1,55 @@
-#pragma once
+п»ї#pragma once
 #include "..\Header Files\HashTableItem.h"
 #include <string>
 
 using namespace std;
 
-// !\brief Порог загрузки для перехеширования
+// !\brief РџРѕСЂРѕРі Р·Р°РіСЂСѓР·РєРё РґР»СЏ РїРµСЂРµС…РµС€РёСЂРѕРІР°РЅРёСЏ
 const double LOAD_FACTOR = 0.7;
 
 struct HashTable
 {
 public:
 
-	// !\brief Размер данной таблицы.
+	// !\brief Р Р°Р·РјРµСЂ РґР°РЅРЅРѕР№ С‚Р°Р±Р»РёС†С‹.
 	int Size;
 
-	// !\brief Количество элементов
+	// !\brief РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
 	int Count;
 
-	// !\brief Конструктор хэш-таблицы.
+	// !\brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ С…СЌС€-С‚Р°Р±Р»РёС†С‹.
 	HashTable(int size);
 
-	// !\brief Массив указателей на элементы хэш-таблицы.
+	// !\brief РњР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° СЌР»РµРјРµРЅС‚С‹ С…СЌС€-С‚Р°Р±Р»РёС†С‹.
 	HashTableItem** Table;
 
-	// !\brief Хэш-функция
-	// !\param key - ключ.
-	// !\returns хеш-сумма.
+	// !\brief РҐСЌС€-С„СѓРЅРєС†РёСЏ
+	// !\param key - РєР»СЋС‡.
+	// !\returns С…РµС€-СЃСѓРјРјР°.
 	int Hash(string key);
 
-	// !\brief Перехэширование
+	// !\brief РџРµСЂРµС…СЌС€РёСЂРѕРІР°РЅРёРµ
 	void Rehash();
 
-	// !\brief Вставка элемента.
-	// !\param key - ключ.
-	// !\param value - значение.
+	// !\brief Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р°.
+	// !\param key - РєР»СЋС‡.
+	// !\param value - Р·РЅР°С‡РµРЅРёРµ.
 	void Insert(string key, string value);
 
-	// !\brief Удаление элемента.
-	// !\param key - ключ.
+	// !\brief РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°.
+	// !\param key - РєР»СЋС‡.
 	void Remove(string key);
 
-	// !\brief Поиск элемента.
-	// !\param key - ключ.
-	// !\returns значение найденного ключа.
+	// !\brief РџРѕРёСЃРє СЌР»РµРјРµРЅС‚Р°.
+	// !\param key - РєР»СЋС‡.
+	// !\returns Р·РЅР°С‡РµРЅРёРµ РЅР°Р№РґРµРЅРЅРѕРіРѕ РєР»СЋС‡Р°.
 	string Find(const std::string& key);
 
-	// !\brief Получение элемента по индексу.
-	// !\param index - индекс по которому нужно получить.
-	// !\returns Элемент
+	// !\brief РџРѕР»СѓС‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РїРѕ РёРЅРґРµРєСЃСѓ.
+	// !\param index - РёРЅРґРµРєСЃ РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ.
+	// !\returns Р­Р»РµРјРµРЅС‚
 	HashTableItem* GetBucket(int index);
 
-	// !\brief Деструктор.
+	// !\brief Р”РµСЃС‚СЂСѓРєС‚РѕСЂ.
 	~HashTable();
 };

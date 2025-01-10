@@ -1,15 +1,15 @@
-#include <iostream>
+п»ї#include <iostream>
 #include "..\Header Files\HashTable.h"
 #include "../Header Files/Dictionary.h"
 #include <string>
 
 using namespace std;
 
-// !\brief Проверяет ввод пользователя на числовое значение.
-// !\returns Число, введенное пользователем, если успешно преобразована строка из консоли. 
+// !\brief РџСЂРѕРІРµСЂСЏРµС‚ РІРІРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° С‡РёСЃР»РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ.
+// !\returns Р§РёСЃР»Рѕ, РІРІРµРґРµРЅРЅРѕРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, РµСЃР»Рё СѓСЃРїРµС€РЅРѕ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅР° СЃС‚СЂРѕРєР° РёР· РєРѕРЅСЃРѕР»Рё. 
 int CheckInput()
 {
-	cout << "Ваш ввод: ";
+	cout << "Р’Р°С€ РІРІРѕРґ: ";
 
 	string input;
 
@@ -19,31 +19,31 @@ int CheckInput()
 		{
 			cin >> input;
 			size_t pos;
-			// попытка преобразовать строку в число
+			// РїРѕРїС‹С‚РєР° РїСЂРµРѕР±СЂР°Р·РѕРІР°С‚СЊ СЃС‚СЂРѕРєСѓ РІ С‡РёСЃР»Рѕ
 			int value = stoi(input, &pos);
-			// проверка на то, все ли символы строки преобразованы.
+			// РїСЂРѕРІРµСЂРєР° РЅР° С‚Рѕ, РІСЃРµ Р»Рё СЃРёРјРІРѕР»С‹ СЃС‚СЂРѕРєРё РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅС‹.
 			if (pos == input.length())
 			{
 				return value;
 			}
 			else
 			{
-				std::cout << "Введено неверное значение (нечисловые символы). Повторите ввод: ";
+				std::cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ (РЅРµС‡РёСЃР»РѕРІС‹Рµ СЃРёРјРІРѕР»С‹). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 			}
 		}
 		catch (std::invalid_argument& e)
 		{
-			std::cout << "Введено неверное значение (не число). Повторите ввод: ";
+			std::cout << "Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ (РЅРµ С‡РёСЃР»Рѕ). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 		}
 
 	}
 }
 
-// !\brief Вывод хэш-таблицы и словаря.
-// !\param dict - словарь.
+// !\brief Р’С‹РІРѕРґ С…СЌС€-С‚Р°Р±Р»РёС†С‹ Рё СЃР»РѕРІР°СЂСЏ.
+// !\param dict - СЃР»РѕРІР°СЂСЊ.
 void Print(Dictionary& dict)
 {
-	cout << "Хэш-таблица:" << endl;
+	cout << "РҐСЌС€-С‚Р°Р±Р»РёС†Р°:" << endl;
 	for (size_t i = 0; i < dict.GetSize(); ++i)
 	{
 		cout << i << ": ";
@@ -51,7 +51,7 @@ void Print(Dictionary& dict)
 
 		if (current == nullptr)
 		{
-			cout << "Пусто";
+			cout << "РџСѓСЃС‚Рѕ";
 		}
 		else
 		{
@@ -68,7 +68,7 @@ void Print(Dictionary& dict)
 		cout << endl;
 	}
 
-	cout << "Словарь:" << endl;
+	cout << "РЎР»РѕРІР°СЂСЊ:" << endl;
 	for (size_t i = 0; i < dict.GetSize(); ++i)
 	{
 		HashTableItem* current = dict.GetBucket(i);
@@ -80,7 +80,7 @@ void Print(Dictionary& dict)
 	}
 }
 
-// !\brief Главное меню.
+// !\brief Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ.
 int main()
 {
 	setlocale(LC_ALL, "ru");
@@ -93,11 +93,11 @@ int main()
 
 	do
 	{
-		cout << "Выберите действие." << endl;
-		cout << "0. Выйти" << endl;
-		cout << "1. Добавить элемент" << endl;
-		cout << "2. Удалить элемент" << endl;
-		cout << "3. Найти элемент" << endl;
+		cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ." << endl;
+		cout << "0. Р’С‹Р№С‚Рё" << endl;
+		cout << "1. Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚" << endl;
+		cout << "2. РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚" << endl;
+		cout << "3. РќР°Р№С‚Рё СЌР»РµРјРµРЅС‚" << endl;
 		userChoice = CheckInput();
 
 		switch (userChoice)
@@ -113,10 +113,10 @@ int main()
 		{
 			string addKey;
 			string addValue;
-			cout << "1. Добавить элемент" << endl;
-			cout << "Введите ключ." << endl;
+			cout << "1. Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚" << endl;
+			cout << "Р’РІРµРґРёС‚Рµ РєР»СЋС‡." << endl;
 			cin >> addKey;
-			cout << "Введите значение." << endl;
+			cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ." << endl;
 			cin >> addValue;
 			dict->Insert(addKey, addValue);
 			Print(*dict);
@@ -127,8 +127,8 @@ int main()
 		case 2:
 		{
 			string deleteKey;
-			cout << "2. Удалить элемент" << endl;
-			cout << "Введите ключ." << endl;
+			cout << "2. РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚" << endl;
+			cout << "Р’РІРµРґРёС‚Рµ РєР»СЋС‡." << endl;
 			cin >> deleteKey;
 			dict->Remove(deleteKey);
 			Print(*dict);
@@ -141,18 +141,18 @@ int main()
 			string findKey;
 			string foundValue;
 
-			cout << "3. Найти элемент" << endl;
-			cout << "Введите ключ." << endl;
+			cout << "3. РќР°Р№С‚Рё СЌР»РµРјРµРЅС‚" << endl;
+			cout << "Р’РІРµРґРёС‚Рµ РєР»СЋС‡." << endl;
 			cin >> findKey;
 			foundValue = dict->Find(findKey);
 
 			if (foundValue != "")
 			{
-				cout << "Значение: " << foundValue << endl;
+				cout << "Р—РЅР°С‡РµРЅРёРµ: " << foundValue << endl;
 			}
 			else
 			{
-				cout << "Элемент не найден." << endl;
+				cout << "Р­Р»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ." << endl;
 			}
 
 			break;
@@ -160,7 +160,7 @@ int main()
 
 		default:
 		{
-			cout << "Выберите допутимое значение.." << endl;
+			cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРѕРїСѓС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ.." << endl;
 			break;
 		}
 

@@ -1,41 +1,41 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 #include "HashTable.h"
 
 struct Dictionary 
 {
-	// !\brief Внутренняя хеш-таблица.
+	// !\brief Р’РЅСѓС‚СЂРµРЅРЅСЏСЏ С…РµС€-С‚Р°Р±Р»РёС†Р°.
 	HashTable _dictionary;
 
-	// !\brief Конструктор.
+	// !\brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 	Dictionary(int initialSize);
 
-	// !\brief Вставка элемента.
-	// !\param value - значение.
+	// !\brief Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р°.
+	// !\param value - Р·РЅР°С‡РµРЅРёРµ.
 	void Insert(std::string& key, std::string& value);
 
-	// !\brief Удаление элемента.
-	// !\param key - ключ.
+	// !\brief РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°.
+	// !\param key - РєР»СЋС‡.
 	void Remove(std::string& key);
 
-	// !\brief Поиск элемента.
-	// !\param key - ключ.
-	// !\returns значение найденного ключа.
+	// !\brief РџРѕРёСЃРє СЌР»РµРјРµРЅС‚Р°.
+	// !\param key - РєР»СЋС‡.
+	// !\returns Р·РЅР°С‡РµРЅРёРµ РЅР°Р№РґРµРЅРЅРѕРіРѕ РєР»СЋС‡Р°.
 	std::string Find(std::string& key);
 
-	// !\brief Возвращает размер словаря.
-	// !\returns Элемент
+	// !\brief Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂР°Р·РјРµСЂ СЃР»РѕРІР°СЂСЏ.
+	// !\returns Р­Р»РµРјРµРЅС‚
 	int GetSize();
 
-	// !\brief Возвращает кол-во эл-тов словаря.
-	// !\returns Элемент
+	// !\brief Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ СЌР»-С‚РѕРІ СЃР»РѕРІР°СЂСЏ.
+	// !\returns Р­Р»РµРјРµРЅС‚
 	int GetCount();
 
-	// !\brief Получение элемента по индексу.
-	// !\param index - индекс по которому нужно получить.
-	// !\returns Элемент
+	// !\brief РџРѕР»СѓС‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РїРѕ РёРЅРґРµРєСЃСѓ.
+	// !\param index - РёРЅРґРµРєСЃ РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ.
+	// !\returns Р­Р»РµРјРµРЅС‚
 	HashTableItem* GetBucket(int index);
 
-	// !\brief Деструктор.
+	// !\brief Р”РµСЃС‚СЂСѓРєС‚РѕСЂ.
 	~Dictionary();
 };
