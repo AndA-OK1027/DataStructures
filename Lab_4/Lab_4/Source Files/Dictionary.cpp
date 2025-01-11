@@ -20,6 +20,7 @@ std::string Dictionary::Find( std::string& key)
 
 Dictionary::~Dictionary()
 {
+	// TODO: Нужно использовать delete
 	_dictionary.~HashTable();
 }
 

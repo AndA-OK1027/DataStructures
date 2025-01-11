@@ -4,7 +4,7 @@
 #include <string>
 
 using namespace std;
-
+// TODO: Не работает удаление элементов таблици и словаря
 // !\brief Проверяет ввод пользователя на числовое значение.
 // !\returns Число, введенное пользователем, если успешно преобразована строка из консоли. 
 int CheckInput()
@@ -41,13 +41,13 @@ int CheckInput()
 
 // !\brief Вывод хэш-таблицы и словаря.
 // !\param dict - словарь.
-void Print(Dictionary& dict)
+void Print(Dictionary* dict)
 {
 	cout << "Хэш-таблица:" << endl;
-	for (size_t i = 0; i < dict.GetSize(); ++i)
+	for (size_t i = 0; i < dict->GetSize(); ++i)
 	{
 		cout << i << ": ";
-		HashTableItem* current = dict.GetBucket(i);
+		HashTableItem* current = dict->GetBucket(i);
 
 		if (current == nullptr)
 		{
@@ -69,9 +69,9 @@ void Print(Dictionary& dict)
 	}
 
 	cout << "Словарь:" << endl;
-	for (size_t i = 0; i < dict.GetSize(); ++i)
+	for (size_t i = 0; i < dict->GetSize(); ++i)
 	{
-		HashTableItem* current = dict.GetBucket(i);
+		HashTableItem* current = dict->GetBucket(i);
 
 		for (; current != nullptr; current = current->Next)
 		{
@@ -83,11 +83,11 @@ void Print(Dictionary& dict)
 // !\brief Главное меню.
 int main()
 {
-	setlocale(LC_ALL, "ru");
+	setlocale(LC_ALL, "ru_RU.UTF-8");
 
 	Dictionary* dict = new Dictionary(8);
 
-	Print(*dict);
+	Print(dict);
 
 	int userChoice;
 
@@ -119,7 +119,7 @@ int main()
 			cout << "Введите значение." << endl;
 			cin >> addValue;
 			dict->Insert(addKey, addValue);
-			Print(*dict);
+			Print(dict);
 
 			break;
 		}
@@ -131,7 +131,7 @@ int main()
 			cout << "Введите ключ." << endl;
 			cin >> deleteKey;
 			dict->Remove(deleteKey);
-			Print(*dict);
+			Print(dict);
 
 			break;
 		}

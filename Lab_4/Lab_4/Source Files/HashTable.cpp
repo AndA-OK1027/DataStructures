@@ -19,6 +19,7 @@ HashTable::HashTable(int size) : Size(size), Count(0)
 
 int HashTable::Hash(string key) 
 {
+	// TODO: Вынести число 256 в константу
 	std::vector<int> table(256);
 	for (int i = 0; i < 256; ++i) 
 	{
