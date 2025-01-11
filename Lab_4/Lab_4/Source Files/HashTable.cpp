@@ -69,7 +69,7 @@ void HashTable::Rehash()
 	Table = newTable;
 }
 
-void HashTable::Insert(string key, string value)
+void HashTable::Insert(string& key, string& value)
 {
 	int index = Hash(key) % Size;
 
@@ -93,7 +93,7 @@ void HashTable::Insert(string key, string value)
 	}
 }
 
-void HashTable::Remove(string key)
+void HashTable::Remove(string& key)
 {
 	int index = Hash(key) % Size;
 	HashTableItem* current = Table[index];

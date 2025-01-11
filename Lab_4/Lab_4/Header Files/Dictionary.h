@@ -6,7 +6,7 @@ struct Dictionary
 {
 	// TODO: Использовать указатели
 	// !\brief Внутренняя хеш-таблица.
-	HashTable _dictionary;
+	HashTable* _dictionary;
 
 	// !\brief Конструктор.
 	Dictionary(int initialSize);

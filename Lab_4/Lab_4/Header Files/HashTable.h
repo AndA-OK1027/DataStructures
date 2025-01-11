@@ -7,6 +7,9 @@ using namespace std;
 // !\brief Порог загрузки для перехеширования
 const double LOAD_FACTOR = 0.7;
 
+// !\brief Перестановки.
+const int PERMUTATIONS_TABLE_SIZE = 256;
+
 struct HashTable
 {
 public:
@@ -34,11 +37,11 @@ public:
 	// !\brief Вставка элемента.
 	// !\param key - ключ.
 	// !\param value - значение.
-	void Insert(string key, string value);
+	void Insert(string& key, string& value);
 
 	// !\brief Удаление элемента.
 	// !\param key - ключ.
-	void Remove(string key);
+	void Remove(string& key);
 
 	// !\brief Поиск элемента.
 	// !\param key - ключ.

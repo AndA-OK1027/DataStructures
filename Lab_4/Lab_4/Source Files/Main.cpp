@@ -83,7 +83,8 @@ void Print(Dictionary* dict)
 // !\brief Главное меню.
 int main()
 {
-	setlocale(LC_ALL, "ru_RU.UTF-8");
+	//setlocale(LC_ALL, "ru_RU.UTF-8");
+	setlocale(LC_ALL, "ru");
 
 	Dictionary* dict = new Dictionary(8);
 
