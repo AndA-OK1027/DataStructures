@@ -49,10 +49,10 @@ void PrintBinaryTree(TreeNode* node)
         return;
     }
 
-    std::cout << "(" << node->key << " ";
-    PrintBinaryTree(node->left);
+    std::cout << "(" << node->Key << " ";
+    PrintBinaryTree(node->Left);
     std::cout << " ";
-    PrintBinaryTree(node->right);
+    PrintBinaryTree(node->Right);
     std::cout << ")";
 }
 
@@ -67,7 +67,7 @@ void PrintTreap(TreapNode* node)
         return;
     }
 
-    std::cout << "(" << node->Key << " ";
+    std::cout << "(" << "key: " << node->Key << " " << "priority: " << node->Priority << " ";
     PrintTreap(node->Left);
     std::cout << " ";
     PrintTreap(node->Right);
@@ -80,16 +80,18 @@ void TreapMenu(Treap* treap)
 {
     while (true)
     {
-        std::cout << "Текущий дерево: " << std::endl;
+        std::cout << "Текущее дерево: " << std::endl;
         PrintTreap(treap->Root);
         std::cout << "Выберете действие: " << std::endl;
         std::cout << "\n0. Выйти и удалить дерево.\
             \n1.Добавить элемент.\
             \n2.Удалить элемент.\
-		    \n3. Найти элемент. " << std::endl;
-        int treeOption = CheckInput();
+            \n3.Добавить элемент неоптимизированным способом.\
+            \n4.Удалить элемент неоптимизированным способом.\
+		    \n5. Найти элемент. " << std::endl;
+        int treapOption = CheckInput();
 
-        switch (treeOption)
+        switch (treapOption)
         {
         case 0:
         {
@@ -126,17 +128,45 @@ void TreapMenu(Treap* treap)
         case 3:
         {
             std::cout << "Введите элемент:" << std::endl;
-            int FindValue;
-            std::cin >> FindValue;
+            int AddValue;
+            std::cin >> AddValue;
+            treap->InsertNotOptimized(AddValue);
+            break;
+        }// case 3
+
+        case 4:
+        {
+            std::cout << "Введите элемент:" << std::endl;
+            int RemoveValue;
+            std::cin >> RemoveValue;
             try
             {
-                if (treap->Search(FindValue) == nullptr)
+                treap->RemoveNotOptimized(RemoveValue);
+            }
+            catch (exception)
+            {
+                cout << "Ошибка" << endl;
+            }
+            break;
+
+        }// 4
+
+        case 5:
+        {
+            std::cout << "Введите элемент:" << std::endl;
+            int FindValue;
+            std::cin >> FindValue;
+            TreapNode* result = treap->Search(FindValue);
+
+            try
+            {
+                if (result == nullptr)
                 {
-                    cout << "Не найден" << endl;
+                    cout << "Не найден"  << endl;
                 }
                 else
                 {
-                    cout << "Найден" << endl;
+                    cout << "Найден" << " " << "Priority: " << result->Priority << " " << endl;
                 }
             }
             catch (exception)
@@ -144,7 +174,7 @@ void TreapMenu(Treap* treap)
                 cout << "Ошибка" << endl;
             }
             break;
-        }// 3
+        }// 5
 
         default:
         {
@@ -162,7 +192,7 @@ void BinaryTreeMenu(BinaryTree* bst)
 {
     while (true)
     {
-        std::cout << "Текущий дерево: " << std::endl;
+        std::cout << "Текущее дерево: " << std::endl;
         PrintBinaryTree(bst->Root);
         std::cout << "Выберете действие: " << std::endl;
         std::cout << "\n0. Выйти и удалить дерево.\
@@ -256,13 +286,14 @@ void BinaryTreeMenu(BinaryTree* bst)
 //
 int main()
 {
-    setlocale(LC_ALL, "ru_RU.UTF-8");
+    //setlocale(LC_ALL, "ru_RU.UTF-8");
+    setlocale(LC_ALL, "ru");
 
     int structChoice;
 
     do
     {
-        std::cout << "Выберете структуру: " << std::endl;
+        std::cout << "Выберите структуру: " << std::endl;
         std::cout << "\n0. Выйти.\
             \n1. Двоичное дерево поиска.\
 			\n2. Декартово дерево." << std::endl;

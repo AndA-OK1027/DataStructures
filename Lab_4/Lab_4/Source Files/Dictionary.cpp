@@ -6,17 +6,17 @@ Dictionary::Dictionary(int initialSize)
 	_dictionary = new HashTable(initialSize);
 }
 
-void Dictionary::Insert(std::string& key, std::string& value)
+void Dictionary::Insert(const string& key, std::string& value)
 {
 	_dictionary->Insert(key, value);
 }
 
-void Dictionary::Remove(std::string& key)
+void Dictionary::Remove(const string& key)
 {
 	_dictionary->Remove(key);
 }
 
-std::string Dictionary::Find( std::string& key)
+std::string Dictionary::Find(const std::string& key)
 {
 	return _dictionary->Find(key);
 }

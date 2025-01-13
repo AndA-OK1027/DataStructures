@@ -25,11 +25,17 @@ public:
 
 	// !\brief Массив указателей на элементы хэш-таблицы.
 	HashTableItem** Table;
+	
+	// !\brief Таблица перестановок для вычисления хеша.
+	int* PearsonTable;
+
+	// !\brief Функция которая создает таблицу перестановок для данной хеш-таблицы.
+	int* CreatePearsonTable();
 
 	// !\brief Хэш-функция
 	// !\param key - ключ.
 	// !\returns хеш-сумма.
-	int Hash(string key);
+	int Hash(const string key);
 
 	// !\brief Перехэширование
 	void Rehash();
@@ -37,11 +43,11 @@ public:
 	// !\brief Вставка элемента.
 	// !\param key - ключ.
 	// !\param value - значение.
-	void Insert(string& key, string& value);
+	void Insert(const string& key, const string& value);
 
 	// !\brief Удаление элемента.
 	// !\param key - ключ.
-	void Remove(string& key);
+	void Remove(const string& key);
 
 	// !\brief Поиск элемента.
 	// !\param key - ключ.

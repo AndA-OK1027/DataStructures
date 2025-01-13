@@ -8,35 +8,45 @@
 
 using namespace std;
 
-HashTable::HashTable(int size) : Size(size), Count(0)
+int* HashTable::CreatePearsonTable()
 {
-	Table = new HashTableItem* [Size]();
-	for (size_t i = 0; i < Size; ++i) 
-	{
-		Table[i] = nullptr;
-	}
-}
-
-int HashTable::Hash(string key) 
-{
-	// TODO: Вынести число 256 в константу
-	std::vector<int> table(256);
-	for (int i = 0; i < 256; ++i) 
+	int* table = new int[PERMUTATIONS_TABLE_SIZE];
+	for (int i = 0; i < PERMUTATIONS_TABLE_SIZE; ++i)
 	{
 		table[i] = i;
 	}
-	// Используем случайное устройство дл¤ генерации случайных чисел
-	std::random_device rd;
-	std::default_random_engine engine(rd());
-	std::shuffle(table.begin(), table.end(), engine);
 
-	// Длина сообщени¤ по модулю 256
-	int hash = key.length() % 256; 
-	for (char i : key)
+	std::srand(std::time(0));
+	for (int i = 0; i < PERMUTATIONS_TABLE_SIZE; ++i)
 	{
-		hash = table[(hash + static_cast<int>(i)) % 256]; 
+		int j = std::rand() % PERMUTATIONS_TABLE_SIZE;
+		std::swap(table[i], table[j]);
 	}
-	return hash;
+
+	return table;
+}
+
+HashTable::HashTable(int size) : Size(size), Count(0)
+{
+	Table = new HashTableItem * [Size]();
+	for (size_t i = 0; i < Size; ++i)
+	{
+		Table[i] = nullptr;
+	}
+	PearsonTable = CreatePearsonTable();
+}
+
+int HashTable::Hash(const string key) 
+{
+	// TODO: Вынести число 256 в константу
+	
+	int hash = 0;
+	for (char c : key)
+	{
+		hash = PearsonTable[(hash + c) % PERMUTATIONS_TABLE_SIZE];
+	}
+
+	return hash % Size;
 }
 
 void HashTable::Rehash()
@@ -69,9 +79,9 @@ void HashTable::Rehash()
 	Table = newTable;
 }
 
-void HashTable::Insert(string& key, string& value)
+void HashTable::Insert(const string& key, const string& value)
 {
-	int index = Hash(key) % Size;
+	int index = Hash(key);
 
 	// Проверка на дубликаты.
 	for (HashTableItem* current = Table[index]; current != nullptr; current = current->Next)
@@ -93,9 +103,9 @@ void HashTable::Insert(string& key, string& value)
 	}
 }
 
-void HashTable::Remove(string& key)
+void HashTable::Remove(const string& key)
 {
-	int index = Hash(key) % Size;
+	int index = Hash(key);
 	HashTableItem* current = Table[index];
 	HashTableItem* prev = nullptr;
 
@@ -122,16 +132,18 @@ void HashTable::Remove(string& key)
 	}
 }
 
-string HashTable::Find(const std::string& key)
+string HashTable::Find(const string& key)
 {
-	int index = Hash(key) % Size;
+	int index = Hash(key);
 
-	for (HashTableItem* current = Table[index]; current != nullptr; current = current->Next)
+	HashTableItem* current = Table[index];
+	while (current)
 	{
-		if (current->Key == key)
+		if (current->Key == key) 
 		{
 			return current->Value;
 		}
+		current = current->Next;
 	}
 
 	return "";

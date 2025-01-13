@@ -4,11 +4,11 @@
 struct TreeNode
 {
     // !\brief Ключ элемента дерева.
-    int key;
+    int Key;
     // !\brief Указатель на левый элемент.
-    TreeNode* left;
+    TreeNode* Left;
     // !\brief Указатель на правый элемент.
-    TreeNode* right;
+    TreeNode* Right;
 
     // !\brief Конструктор элемента дерева.
     // !\param value - значение для ключа.

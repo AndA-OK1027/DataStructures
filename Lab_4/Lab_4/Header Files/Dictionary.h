@@ -13,16 +13,16 @@ struct Dictionary
 
 	// !\brief Вставка элемента.
 	// !\param value - значение.
-	void Insert(std::string& key, std::string& value);
+	void Insert(const std::string& key, std::string& value);
 
 	// !\brief Удаление элемента.
 	// !\param key - ключ.
-	void Remove(std::string& key);
+	void Remove(const std::string& key);
 
 	// !\brief Поиск элемента.
 	// !\param key - ключ.
 	// !\returns значение найденного ключа.
-	std::string Find(std::string& key);
+	std::string Find(const std::string& key);
 
 	// !\brief Возвращает размер словаря.
 	// !\returns Элемент

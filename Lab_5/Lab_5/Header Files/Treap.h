@@ -22,12 +22,22 @@ private:
     // !\brief Добавление.
     // !\param node - Указатель на узел.
     // !\param key - Ключ по которому добавлять.
-    TreapNode* InsertNode(TreapNode*& node, int key);
+    TreapNode* InsertNodeNotOptimized(TreapNode*& node, int key);
+
+    // !\brief Добавление .
+    // !\param node - Указатель на узел.
+    // !\param key - Ключ по которому добавлять.
+    TreapNode* InsertNodeOptimized(TreapNode*& node, int key);
 
     // !\brief Удаление.
     // !\param node - Указатель на узел.
     // !\param key - Ключ по которому удалять.
-    TreapNode* RemoveNode(TreapNode*& node, int key);
+    TreapNode* RemoveNodeNotOptimized(TreapNode*& node, int key);
+
+    // !\brief Удаление.
+    // !\param node - Указатель на узел.
+    // !\param key - Ключ по которому удалять.
+    TreapNode* RemoveNodeOptimized(TreapNode*& node, int key);
 
 public:
 
@@ -40,7 +50,15 @@ public:
     // TODO: Не реализован оптимизированный алгоритм (1 Split) добавления 
     // !\brief Добавление.
     // !\param key - Ключ по которому добавлять.
+    void InsertNotOptimized(int key);
+
+    // !\brief Добавление.
+    // !\param key - Ключ по которому добавлять.
     void Insert(int key);
+
+    // !\brief Удаление.
+    // !\param key - Ключ по которому удалять.
+    void RemoveNotOptimized(int key);
 
     // TODO: Не реализованы алгоритмы удаления 
     // !\brief Удаление.
@@ -49,7 +67,7 @@ public:
 
     // !\brief Указатель на корневой элемент.
     // !\param key - Ключ по которому искать.
-    TreapNode* Search(int key);
+    TreapNode* Search(int key) const;
 
     // !\brief Очищает дерево.
     void Clear(TreapNode* node);
