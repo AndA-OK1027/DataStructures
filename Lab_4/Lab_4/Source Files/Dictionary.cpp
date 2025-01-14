@@ -23,7 +23,6 @@ std::string Dictionary::Find(const std::string& key)
 
 Dictionary::~Dictionary()
 {
-	// TODO: Нужно использовать delete
 	delete _dictionary;
 }
 

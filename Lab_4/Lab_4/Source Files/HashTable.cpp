@@ -37,9 +37,7 @@ HashTable::HashTable(int size) : Size(size), Count(0)
 }
 
 int HashTable::Hash(const string key) 
-{
-	// TODO: Вынести число 256 в константу
-	
+{	
 	int hash = 0;
 	for (char c : key)
 	{

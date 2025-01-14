@@ -4,7 +4,6 @@
 
 struct Dictionary 
 {
-	// TODO: Использовать указатели
 	// !\brief Внутренняя хеш-таблица.
 	HashTable* _dictionary;
 
