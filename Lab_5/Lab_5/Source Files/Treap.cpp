@@ -71,45 +71,46 @@ TreapNode* Treap::InsertNodeOptimized(TreapNode*& node, int key)
 		return newNode;
 	}
 
-	if (node->Priority > newNode->Priority)
+	TreapNode* current = node;
+	while (true)
 	{
-		TreapNode* current = node;
-		while (true)
+		if (key < current->Key)
 		{
-			if (key < current->Key)
+			if (current->Left == nullptr)
 			{
-				TreapNode* left = current->Left;
-				if (!left)
-				{
-					current->Left = newNode;
-					break;
-				}
-				current = left;
+				break;
 			}
-			else
-			{
-				TreapNode* right = current->Right;
-				if (!right)
-				{
-					current->Right = newNode;
-					break;
-				}
-				current = right;
-			}
+
+			current = current->Left;
 		}
+		else
+		{
+			if (current->Right == nullptr)
+			{
+				break;
+			}
+
+			current = current->Right;
+		}
+	}
+
+	if (node == nullptr || Root->Priority < newNode->Priority)
+	{
+		Split(current, key, newNode->Left, newNode->Right);
+		Root = newNode;
+	}
+	else if (current->Key > newNode->Key)
+	{
+		Split(current->Left, key, newNode->Left, newNode->Right);
+		current->Left = newNode;
 	}
 	else
 	{
-		TreapNode* leftTemp = nullptr;
-		TreapNode* rightTemp = nullptr;
-
-		Split(Root, key, leftTemp, rightTemp);
-
-		newNode->Left = leftTemp;
-		newNode->Right = rightTemp;
-
-		return newNode;
+		Split(current->Right, key, newNode->Left, newNode->Right);
+		current->Right = newNode;
 	}
+
+	return newNode;
 }
 
 TreapNode* Treap::RemoveNodeNotOptimized(TreapNode*& node, int key)
@@ -147,26 +148,52 @@ TreapNode* Treap::RemoveNodeOptimized(TreapNode*& node, int key)
 		return node;
 	}
 
-	if (key > node->Key)
+	TreapNode* current = Root;
+	while (current != nullptr && current->Key != key)
 	{
-		TreapNode* rightChild = node->Right;
-		RemoveNodeOptimized(rightChild, key);
-		node->Right = rightChild;
+		if (current->Key > key)
+		{
+			if (current->Left == nullptr ||
+				current->Left->Key == key) break;
+
+			current = current->Left;
+		}
+		else
+		{
+			if (current->Right == nullptr ||
+				current->Right->Key == key) break;
+
+			current = current->Right;
+		}
 	}
-	else if (key < node->Key)
+
+	TreapNode* temp;
+	if (current == Root && current->Key == key)
 	{
-		TreapNode* leftChild = node->Left;
-		RemoveNodeOptimized(leftChild, key);
-		node->Left = leftChild;
+		temp = current;
+		Root = Merge(temp->Left, temp->Right);
+	}
+	else if (current->Key > key)
+	{
+		if (current->Left == nullptr)
+		{
+			return false;
+		}
+		temp = current->Left;
+		current->Left = Merge(temp->Left, temp->Right);
 	}
 	else
 	{
-		TreapNode* temp = node;
-		TreapNode* result = Merge(node->Left, node->Right);
-		node = result;
-		return node;
-		delete temp;
+		if (current->Right == nullptr)
+		{
+			return false;
+		}
+		temp = current->Right;
+		current->Right = Merge(temp->Left, temp->Right);
 	}
+
+	delete temp;
+	return node;
 }
 
 void Treap::InsertNotOptimized(int key)

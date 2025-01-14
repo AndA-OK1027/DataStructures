@@ -46,8 +46,6 @@ public:
 
     // !\brief Конструктор.
     Treap();
-
-    // TODO: Не реализован оптимизированный алгоритм (1 Split) добавления 
     // !\brief Добавление.
     // !\param key - Ключ по которому добавлять.
     void InsertNotOptimized(int key);
@@ -60,7 +58,6 @@ public:
     // !\param key - Ключ по которому удалять.
     void RemoveNotOptimized(int key);
 
-    // TODO: Не реализованы алгоритмы удаления 
     // !\brief Удаление.
     // !\param key - Ключ по которому удалять.
     void Remove(int key);

@@ -56,7 +56,6 @@ void PrintBinaryTree(TreeNode* node)
     std::cout << ")";
 }
 
-// TODO: Нет вывода Priority
 // \!brief Вывод декартового дерева.
 // \!param node - корень.
 void PrintTreap(TreapNode* node)
@@ -286,8 +285,8 @@ void BinaryTreeMenu(BinaryTree* bst)
 //
 int main()
 {
-    //setlocale(LC_ALL, "ru_RU.UTF-8");
-    setlocale(LC_ALL, "ru");
+    setlocale(LC_ALL, "ru_RU.UTF-8");
+    // setlocale(LC_ALL, "ru");
 
     int structChoice;
 
